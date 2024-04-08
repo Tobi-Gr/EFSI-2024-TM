@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>ToDo-List</title>
+</head>
+<body>
+    <h1>TimeWise</h1>
+    <form>
+        <input type="text" maxlength="150" placeholder="Escribe tu tarea..." id="input"/>
+        <button onclick="Agregar(event)" id="agregar">Agregar</button>
+    </form>
+    <ul id="tareas">
+    </ul>
+    <button onclick="CalcularMasRapido()">Tarea más rápida</button>
+    <h4 id="masRapido"></h4>
+    <script src="script.js"></script>
+</body>
+</html>

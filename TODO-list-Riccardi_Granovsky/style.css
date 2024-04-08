@@ -1,0 +1,23 @@
+:root {
+    --violeta: #9980DE;
+    --verde: #58BA8A;
+}
+
+ul {
+    list-style: none;
+    font-size:large;
+}
+
+#agregar{
+    background-color: var(--verde);
+    color: white;
+    border-color: var(--verde);
+}
+
+h1{
+    color: var(--violeta);
+}
+
+p {
+    font-size: small;
+}
