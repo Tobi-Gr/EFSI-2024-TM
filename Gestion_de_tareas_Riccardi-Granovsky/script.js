@@ -7,9 +7,8 @@ function Tarea(enunciado, descripcion, vencimiento)
     this.enunciado = enunciado;
     this.estado = "Pendiente";
     this.descripcion = descripcion;
-    let hoy = new Date();
-    if(vencimiento && vencimiento > hoy)
-    {
+    let hoy = new Date().getTime();
+    if (vencimiento && new Date(vencimiento).getTime() > hoy) {
         this.vencimiento = vencimiento;
     }
 }
@@ -57,6 +56,8 @@ function MostrarProyectos()
                                 <button id="mostrarTareas" onclick = "MostrarTareas(event, ${index})"> Mostrar tarea </button>
                                 <button id="agregarTareas" onclick="AbrirFormTarea(event, ${index})"> Agregar tarea </button>
                                 <button id="buscarFecha" onclick="AbrirFormBuscar(event, ${index})"> Buscar fecha </button>
+                                
+                                <div id="formFecha${index}"></div>
                                 <div id="listaTareas${index}"></div>
                                 <div id="inputTareas${index}"></div>`
         
@@ -64,7 +65,6 @@ function MostrarProyectos()
     });
 }
 
-//ALINEAR LOS LABEL
 function MostrarTareas(event, indexP)
 {
     event.preventDefault();
@@ -91,17 +91,23 @@ function MostrarTareas(event, indexP)
 function AbrirFormTarea(event, index)
 {
     event.preventDefault();
-    let inputTareas = document.getElementById(`inputTareas${index}`)
+    let inputTareas = document.getElementById(`inputTareas${index}`);
     let hoy = new Date();
     hoy = FormatearFecha(hoy);
-    inputTareas.innerHTML = `<form>
-                                <input type="text" maxlength="150" placeholder="Escribe tu nueva tarea..." id="enunciado${index}">
-                                <br>
-                                <textarea id="descTarea${index}" rows="4" cols="50" placeholder="Describe tu tarea brevemente..."></textarea>
-                                <input type="date" min="${hoy}" id="fecha${index}"> 
-                                <button onclick="AgregarTarea(event, ${index})" id="agregar">Agregar</button>
-                                <h5 id="errores"></h5>
-                            </form>`
+    if (inputTareas.innerHTML == "")
+    {
+        inputTareas.innerHTML = `<form>
+                                    <input type="text" maxlength="150" placeholder="Escribe tu nueva tarea..." id="enunciado${index}">
+                                    <br>
+                                    <textarea id="descTarea${index}" rows="4" cols="50" placeholder="Describe tu tarea brevemente..."></textarea>
+                                    <input type="date" min="${hoy}" id="fecha${index}"> 
+                                    <button onclick="AgregarTarea(event, ${index})" id="agregar">Agregar</button>
+                                    <h5 id="errores"></h5>
+                                </form>`
+    }
+    else{
+        inputTareas.innerHTML = "";
+    }
 }
 
 function AgregarTarea(event, proyectoIndex)
@@ -132,16 +138,39 @@ function TerminarTarea(indexProyecto, indexTarea)
 function AbrirFormBuscar(event, indexProyecto)
 {
     event.preventDefault();
-    let proyectoDiv = document.getElementById(`proyecto${indexProyecto}`);
-        proyectoDiv.innerHTML += `<form id="buscarFecha${indexProyecto}">
+    let divFecha = document.getElementById(`formFecha${indexProyecto}`);
+    if (divFecha.innerHTML == "")
+    {
+        divFecha.innerHTML += `<form>
                                 <input type="date" id="fechaABuscar${indexProyecto}"> 
-                                <button onclick="BuscarPorFecha(event, ${indexProyecto})" id="agregar">Buscar</button>
+                                <button onclick="BuscarPorFecha(event, ${indexProyecto})" id="fechaABuscar${indexProyecto}">Buscar</button>
                                 </form>`
+    }
+    else
+    {
+        divFecha.innerHTML = "";
+    }
 }
 
 function BuscarPorFecha(event, indexProyecto)
 {
     event.preventDefault();
-    let formBuscar = document.getElementById(`buscarFecha${indexProyecto}`)
-    //document.removeChild(formBuscar);
+    let fechaABuscar = document.getElementById(`fechaABuscar${indexProyecto}`);
+    let busqueda = fechaABuscar.value;
+    let formBuscar = document.getElementById(`formFecha${indexProyecto}`);
+    formBuscar.innerHTML = "";
+    let divTareas = document.getElementById(`listaTareas${indexProyecto}`);
+    divTareas.innerHTML = "";
+    listaProyectos[indexProyecto].tareas.forEach((tarea, index) => {
+        if (tarea.vencimiento == busqueda)
+        {
+            divTareas.innerHTML += `<div class="contenedor-tarea">
+                                        <h4>${tarea.estado == "Terminado" ? `<s>${tarea.enunciado}</s>` : `${tarea.enunciado}`}</h4>
+                                        <label class="container" onclick="TerminarTarea(${indexProyecto}, ${index})">
+                                            <input type="checkbox" ${tarea.estado == "Terminado" ? `checked="checked"` : ``}>
+                                        </label>
+                                        <h5>${tarea.descripcion} ${tarea.vencimiento ? `- Fecha de vencimiento: ${tarea.vencimiento}` : ``}</h5>
+                                    </div>`
+        }
+    });
 }
