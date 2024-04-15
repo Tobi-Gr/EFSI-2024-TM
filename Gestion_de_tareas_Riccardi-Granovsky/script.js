@@ -56,25 +56,36 @@ function MostrarProyectos()
                                 <p>${proyecto.descripcion ? `${proyecto.descripcion}` : ``}</p>
                                 <button id="mostrarTareas" onclick = "MostrarTareas(event, ${index})"> Mostrar tarea </button>
                                 <button id="agregarTareas" onclick="AbrirFormTarea(event, ${index})"> Agregar tarea </button>
+                                <button id="buscarFecha" onclick="AbrirFormBuscar(event, ${index})"> Buscar fecha </button>
+                                <div id="listaTareas${index}"></div>
                                 <div id="inputTareas${index}"></div>`
         
         divProyectos.appendChild(proyectoDiv);
     });
 }
 
+//ALINEAR LOS LABEL
 function MostrarTareas(event, indexP)
 {
     event.preventDefault();
-    let proyectoDiv = document.getElementById(`proyecto${indexP}`)
-    listaProyectos[indexP].tareas.forEach((tarea, indexT) =>
-        {
-            proyectoDiv.innerHTML += `<label class="container" onclick="TerminarTarea(${indexP}, ${indexT})">
-                                            <input type="checkbox" checked="checked">
-                                            <div class="checkmark"></div>
-                                        </label>
-                                        <h4>${tarea.estado == "Terminado" ? `<s>${tarea.enunciado}</s>` : `${tarea.enunciado}`}</h4>
-                                        <h5>${tarea.descripcion} ${tarea.vencimiento ? `- Fecha de vencimiento: ${tarea.vencimiento}` : ``}</h5>`;
-        });
+    let tareasDiv = document.getElementById(`listaTareas${indexP}`)
+    if (tareasDiv.innerHTML == "")
+    {
+        listaProyectos[indexP].tareas.forEach((tarea, indexT) =>
+            {
+                tareasDiv.innerHTML += `<div class="contenedor-tarea">
+                                            <h4>${tarea.estado == "Terminado" ? `<s>${tarea.enunciado}</s>` : `${tarea.enunciado}`}</h4>
+                                            <label class="container" onclick="TerminarTarea(${indexP}, ${indexT})">
+                                                <input type="checkbox" ${tarea.estado == "Terminado" ? `checked="checked"` : ``}>
+                                            </label>
+                                            <h5>${tarea.descripcion} ${tarea.vencimiento ? `- Fecha de vencimiento: ${tarea.vencimiento}` : ``}</h5>
+                                        </div>`;
+            });
+    }
+    else
+    {
+        tareasDiv.innerHTML = "";
+    }
 }
 
 function AbrirFormTarea(event, index)
@@ -116,4 +127,21 @@ function FormatearFecha(fecha) {
 function TerminarTarea(indexProyecto, indexTarea)
 {
     listaProyectos[indexProyecto].tareas[indexTarea].estado = "Terminado";
+}
+
+function AbrirFormBuscar(event, indexProyecto)
+{
+    event.preventDefault();
+    let proyectoDiv = document.getElementById(`proyecto${indexProyecto}`);
+        proyectoDiv.innerHTML += `<form id="buscarFecha${indexProyecto}">
+                                <input type="date" id="fechaABuscar${indexProyecto}"> 
+                                <button onclick="BuscarPorFecha(event, ${indexProyecto})" id="agregar">Buscar</button>
+                                </form>`
+}
+
+function BuscarPorFecha(event, indexProyecto)
+{
+    event.preventDefault();
+    let formBuscar = document.getElementById(`buscarFecha${indexProyecto}`)
+    //document.removeChild(formBuscar);
 }

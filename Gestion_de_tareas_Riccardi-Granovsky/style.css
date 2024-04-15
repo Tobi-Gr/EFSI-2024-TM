@@ -1,0 +1,9 @@
+.contenedor-tarea
+{
+    display: inline-block;
+    width: 100%;
+}
+
+h1{
+    color: rgb(156, 33, 212);
+}
