@@ -1,0 +1,263 @@
+body {
+  margin: 0;
+  background-color: aliceblue;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#educacion-content, #conocimiento-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.MainTitle{
+  font-size: 3em;
+  margin-top: 0;
+  margin-bottom: 0;
+  color:darkblue;
+}
+
+#intro{
+  margin-top: 5%;
+}
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-front img{
+  width: 300px;
+  height: 200px;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: darkblue;
+  color: aliceblue;
+  transform: rotateY(180deg);
+}
+
+.titulo {
+  color: darkblue;
+  text-align: center;
+  margin-bottom: 0%;
+  margin-top: 2%;
+}
+
+/*Card conocimientos*/
+
+.containerConocimiento {
+  padding: 5%, 5%, 0%, 5%;
+  text-align: center;
+}
+
+.svg-conocimientos{
+  width: 10em;
+}
+
+#vector{
+  width: 30%;
+  margin-left: 10%;
+}
+
+/*Intro*/
+#intro{
+  display: flex;
+  flex-direction: row;
+}
+
+#intro-content{
+  display: flex;
+  flex-direction: column;
+  margin-left: 5%;
+}
+
+/*Idiomas*/
+#idiomas-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.cardIdioma {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  width: 15%;
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+.idiomaImg {
+  border-radius: 5px 5px 0 0;
+  width: 100%;
+}
+
+/*Parte contactos*/
+
+.formContact {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+  width: 350px;
+  background-color: white;
+  padding-right: 40px;
+  padding-left: 10px;
+  margin-left: 16.5%;
+  border-radius: 10px;
+  box-shadow: 0 30px 30px -30px rgba(27, 26, 26, 0.315);
+}
+
+.formContact .titleContact {
+  color: darkblue;
+  font-size: 30px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formContact input {
+  outline: 0;
+  border: 1px solid rgb(219, 213, 213);
+  padding: 8px 14px;
+  border-radius: 8px;
+  width: 100%;
+  height: 50px;
+}
+
+.formContact textarea {
+  border-radius: 8px;
+  height: 100px;
+  width: 100%;
+  resize: none;
+  outline: 0;
+  padding: 8px 14px;
+  border: 1px solid rgb(219, 213, 213);
+}
+
+.formContact button {
+  align-self: flex-end;
+  padding: 8px;
+  outline: 0;
+  border: 0;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  background-color: darkblue;
+  color: #fff;
+  cursor: pointer;
+}
+
+/*ACERCA DE MÍ*/
+#foto{
+  border-radius: 50%;
+  width: 25%;
+  margin-right: 10%;
+}
+
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  margin-left: 10%;
+  margin-right: 5%;
+}
+
+.flex-col{
+  display: flex;
+  flex-direction: column;
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+.gris{
+  color: grey;
+  margin-top: 5%;
+  margin-bottom: 0%;
+}
+
+.linea{
+  width:10%;
+  margin-left: 45%;
+  margin-top: 0%;
+  margin-bottom: 5%;
+}
+
+/*Nav*/
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: aliceblue;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  box-shadow: 5px 5px 20px grey;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: darkblue;
+  font-size: large;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
