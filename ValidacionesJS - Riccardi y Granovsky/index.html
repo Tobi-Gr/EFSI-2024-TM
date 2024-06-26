@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TP Validaciones JavaScript</title>
+</head>
+<body>
+    <form>
+        <p>Nota matemática: <input type="number" class="materia" onkeyup="Validar()" name="Matemática"></p>
+        <p>Nota lengua: <input type="number" class="materia" onkeyup="Validar()" name="Lengua"></p>
+        <p>Nota EFSI: <input type="number" class="materia" onkeyup="Validar()" name="EFSI"></p>
+    </form>
+    <button onclick="CalcularPromedio()">Calcular promedio</button>
+    <button onclick="ObtenerMejorNota()">Mejor nota</button>
+    <div id="resultados">
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

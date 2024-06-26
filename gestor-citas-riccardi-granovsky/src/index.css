@@ -1,0 +1,94 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: rgba(0, 0, 139, 0.76);
+  font-family: sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}
+
+.row{
+  display: flex;
+  flex-direction: row;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+#creacion-cita{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo{
+  font-size: 1.5rem;
+  align-self: center;
+} 
+
+.subtitulo{
+  font-size: 1rem;
+}
+
+.titulo, .subtitulo{
+    color: aliceblue;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: -0.1rem;
+    font-weight: 300;
+}
+
+.column{
+  flex-direction: column;
+  width: 50%;
+  margin: 5%;
+  align-items: center;
+}
+
+.btn{
+  background-color: aliceblue;
+  color: darkblue;
+  font-weight: bold;
+  font-size: medium;
+  text-transform: uppercase;
+  border-color: darkblue;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  border-radius: 4px;
+}
+
+.cita{
+  background-color: aliceblue;
+  color: darkblue;
+  font-size: medium;
+  padding: 5%;
+  border-radius: 4px;
+  margin-bottom: 5%;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.almost-full-width{
+  width: 96%;
+}
+
+input, textarea{
+  background-color: aliceblue;
+  padding: 2%;
+  border: none;
+  margin-bottom: 5%;
+  border-radius: 4px;
+}
+
+label{
+  color: aliceblue;
+  margin-bottom: 10%;
+  font-weight: bold;
+}
+
+
