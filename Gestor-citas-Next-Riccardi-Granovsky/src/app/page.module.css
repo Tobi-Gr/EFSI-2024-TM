@@ -18,7 +18,7 @@
   margin-top: 0.5em;
   font-size: 1.25em;
   font-weight: bold;
-  background-color: rgb(237,246,254);
+  background-color: rgb(237,246,254); /*ver como hacer que no ocupe toda la pantalla*/
   padding-left: 1em;
   padding-right: 1em;
 }
