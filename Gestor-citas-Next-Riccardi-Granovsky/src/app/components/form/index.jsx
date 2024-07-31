@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import Button from '../Button/';
+import ButtonLink from '../Button';
 import InputText from '../InputText';
 
 const Form = ({ agregarCita }) => {
@@ -33,7 +33,7 @@ const Form = ({ agregarCita }) => {
         <label className="prompt">Síntomas</label>
         <br />
         <input className="inputText almost-full-width" type="text" value={sintomas} onChange={(e) => setSintomas(e.target.value)} />
-        <Button texto="Agregar cita" id="agregar-cita" type="submit" onClick={handleSubmit}/>
+        <ButtonLink texto="Agregar cita" id="agregar-cita" type="submit" onClick={handleSubmit}/>
       </form>
     </div>
   );
