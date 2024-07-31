@@ -27,6 +27,10 @@
   margin-bottom: 0.5em;
 }
 
+.center{
+  justify-self: center;
+}
+
 .subtitle{
   font-size: 2em;
 }
@@ -38,6 +42,18 @@
   background-color: rgb(237,246,254); /*ver como hacer que no ocupe toda la pantalla*/
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.buttonCard{
+  background-color: rgb(237, 246, 254);
+  color: darkblue;
+  font-weight: bold;
+  font-size: medium;
+  text-transform: uppercase;
+  border: none;
+  margin-top: 3%;
+  padding: 2%;
+  border-radius: 4px;
 }
 
 .noBullets{
@@ -74,12 +90,11 @@
   width: 100%;
 }
 
-.almost-full-width{
+.almostFullWidth{
   width: 96%;
 }
 
-/* tienen que ser de una clase o id, no una tag 
-input, textarea{
+.input{
   background-color: aliceblue;
   padding: 2%;
   border: none;
@@ -87,8 +102,12 @@ input, textarea{
   border-radius: 4px;
 }
 
-label{
-  color: aliceblue;
+.prompt{
+  color: darkblue;
   margin-bottom: 10%;
   font-weight: bold;
-} */
+} 
+
+.columnTitle{
+  padding-bottom: 1.5em;
+}

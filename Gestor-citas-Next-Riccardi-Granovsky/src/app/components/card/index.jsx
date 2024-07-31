@@ -1,4 +1,5 @@
 import ButtonLink from "../Button";
+import styles from "./../../page.module.css";
 
 const Card = ({ cita, eliminarCita }) => {
   const handleClick = (event) => {
@@ -13,7 +14,7 @@ const Card = ({ cita, eliminarCita }) => {
       <p><b>Fecha:</b> {cita.fecha}</p>
       <p><b>Hora:</b> {cita.hora}</p>
       <p><b>Sintomas:</b> {cita.sintomas}</p>
-      <button type="submit" onClick={handleClick}>Eliminar</button>
+      <button className={styles.buttonCard} type="submit" onClick={handleClick}>Eliminar</button>
     </div>
   );
 };

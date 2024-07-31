@@ -41,21 +41,21 @@ export default function Reservation() {
   };
 
   return (
-    <div className={styles.layout}>
-        <h1 className={styles.anotherTitle}>Administrador de pacientes</h1>
+    <div className={styles.layoutColumn}>
+      <h1 className={styles.anotherTitle}>Administrador de pacientes</h1>
       <div className={styles.row}>      
         <div className={styles.column}>
               <Subtitulo texto="Crear mi cita"/>
               <Form agregarCita={AgregarCita}/>
         </div>
-        <div className="column">
+        <div className={styles.column}>
               <Subtitulo texto="Administra tus citas"/>
                 {citas.map((cita) => (                
                      <Card cita={cita} eliminarCita={eliminarCita}/>
                 ))}
         </div>
       </div>
-      <Link href="/">Volver</Link>
+      <Link href="/"><b>Volver</b></Link>
     </div>
   );
 }
