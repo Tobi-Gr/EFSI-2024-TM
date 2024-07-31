@@ -1,4 +1,6 @@
 "use client";
+//foto para el fondo: https://www.freepik.es/vector-gratis/coleccion-banderas-ondeando_1152871.htm#fromView=search&page=1&position=6&uuid=e074ce47-8139-4f19-8b24-c4020251f31f
+
 
 import { useEffect, useState } from 'react';
 import Image from "next/image";
