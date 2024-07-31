@@ -45,3 +45,50 @@
   font-size:large;
   margin-bottom: 1em;
 }
+
+.row{
+  display: flex;
+  flex-direction: row;
+  padding-left: 25%;
+  padding-right: 25%;
+}
+
+.column{
+  flex-direction: column;
+  width: 50%;
+  margin: 5%;
+  align-items: center;
+}
+
+/*DIRECTAMENTE COPIADO DEL TP ANTERIOR*/
+.cita{
+  background-color: aliceblue;
+  color: darkblue;
+  font-size: medium;
+  padding: 5%;
+  border-radius: 4px;
+  margin-bottom: 5%;
+}
+
+.full-width{
+  width: 100%;
+}
+
+.almost-full-width{
+  width: 96%;
+}
+
+/* tienen que ser de una clase o id, no una tag 
+input, textarea{
+  background-color: aliceblue;
+  padding: 2%;
+  border: none;
+  margin-bottom: 5%;
+  border-radius: 4px;
+}
+
+label{
+  color: aliceblue;
+  margin-bottom: 10%;
+  font-weight: bold;
+} */

@@ -1,7 +1,7 @@
 const ButtonLink = ({ texto, link }) => {
     return (
       <div>
-        <a type="button" /*className={styles.welcome-btn}*/ href={link}>
+        <a type="button" href={link}>
           {texto}
         </a>
       </div>
