@@ -1,9 +1,12 @@
-.main {
+.layout {
   display: flex;
-  justify-content: center;
   flex-direction: column;
   padding: 3rem;
   min-height: 100vh;
+}
+
+.main {
+  justify-content: center;
 }
 
 .title{
@@ -21,4 +24,8 @@
   background-color: rgb(237,246,254); /*ver como hacer que no ocupe toda la pantalla*/
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.noBullets{
+  list-style-type: none;
 }
