@@ -1,8 +1,13 @@
-.layout {
+.layoutColumn {
   display: flex;
   flex-direction: column;
   padding: 3rem;
   min-height: 100vh;
+}
+
+.aboutUs{
+  display: flex;
+  flex-direction: row;
 }
 
 .main {

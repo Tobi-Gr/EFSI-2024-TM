@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 export default function Contact() {
   return (
-    <main class={styles.layout}>
+    <main class={styles.layoutColumn}>
       <h1 class={styles.anotherTitle} >Contacto</h1>
 
       <ul class={styles.noBullets}>
