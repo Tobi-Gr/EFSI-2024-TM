@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import ButtonLink from '../Button';
 import InputText from '../InputText';
 
 const Form = ({ agregarCita }) => {
@@ -11,6 +10,7 @@ const Form = ({ agregarCita }) => {
   const [sintomas, setSintomas] = useState('');
 
   const handleSubmit = (e) => {
+    console.log("agregaste una cita");
     e.preventDefault();
     agregarCita(nombre, animal, duenio, fecha, hora, sintomas);
     setFecha('');
@@ -33,7 +33,7 @@ const Form = ({ agregarCita }) => {
         <label className="prompt">Síntomas</label>
         <br />
         <input className="inputText almost-full-width" type="text" value={sintomas} onChange={(e) => setSintomas(e.target.value)} />
-        <ButtonLink texto="Agregar cita" id="agregar-cita" type="submit" onClick={handleSubmit}/>
+        <button id="agregar-cita" type="submit" onClick={handleSubmit}>Agregar cita</button>
       </form>
     </div>
   );

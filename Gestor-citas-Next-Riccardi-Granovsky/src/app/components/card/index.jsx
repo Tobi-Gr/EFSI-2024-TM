@@ -13,7 +13,7 @@ const Card = ({ cita, eliminarCita }) => {
       <p><b>Fecha:</b> {cita.fecha}</p>
       <p><b>Hora:</b> {cita.hora}</p>
       <p><b>Sintomas:</b> {cita.sintomas}</p>
-      <ButtonLink texto="Eliminar" onClick={handleClick} />
+      <button type="submit" onClick={handleClick}>Eliminar</button>
     </div>
   );
 };
