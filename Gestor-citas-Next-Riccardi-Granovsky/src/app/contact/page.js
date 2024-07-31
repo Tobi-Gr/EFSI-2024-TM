@@ -5,7 +5,7 @@ import Link from 'next/link';
 export default function Contact() {
   return (
     <main class={styles.layout}>
-      <h1 class={styles.title} >Contacto</h1>
+      <h1 class={styles.anotherTitle} >Contacto</h1>
 
       <ul class={styles.noBullets}>
         <li><b>🐾 Gmail</b>: Purrfect@gmail.com</li>

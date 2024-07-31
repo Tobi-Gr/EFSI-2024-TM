@@ -17,6 +17,11 @@
   font-size: 5em;
 }
 
+.anotherTitle{
+  font-size: 3em;
+  margin-bottom: 0.5em;
+}
+
 .subtitle{
   font-size: 2em;
 }
@@ -32,4 +37,6 @@
 
 .noBullets{
   list-style-type: none;
+  font-size:large;
+  margin-bottom: 1em;
 }
