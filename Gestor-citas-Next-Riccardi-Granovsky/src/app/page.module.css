@@ -1,6 +1,13 @@
-.main {
+.layout {
   display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  min-height: 100vh;
+}
+
+.main {
   justify-content: center;
+  display: flex;
   flex-direction: column;
   padding: 3rem;
   min-height: 100vh;
@@ -8,6 +15,11 @@
 
 .title{
   font-size: 5em;
+}
+
+.anotherTitle{
+  font-size: 3em;
+  margin-bottom: 0.5em;
 }
 
 .subtitle{
@@ -19,5 +31,12 @@
   font-size: 1.25em;
   font-weight: bold;
   background-color: rgb(237,246,254); /*ver como hacer que no ocupe toda la pantalla*/
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
+.noBullets{
+  list-style-type: none;
+  font-size:large;
+  margin-bottom: 1em;
+}

@@ -4,7 +4,7 @@ import WhoAreWe from "../components/WhoAreWe";
 import Link from 'next/link';
 export default function WhoAreWe() {
   return (
-    <main className={styles.main} /*cambiar al estilo de página que corresponde*/ >
+    <main className={styles.layout}>
       <h1>Quienes somos</h1>
       <WhoAreWe
         image = "https://recursos.ort.edu.ar/static/archivos/usuarioperfil/80344"

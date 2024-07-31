@@ -4,8 +4,14 @@ import Link from 'next/link';
 
 export default function Contact() {
   return (
-    <main className={styles.main}>
-      <h1>Contacto</h1>
+    <main class={styles.layout}>
+      <h1 class={styles.anotherTitle} >Contacto</h1>
+
+      <ul class={styles.noBullets}>
+        <li><b>🐾 Gmail</b>: Purrfect@gmail.com</li>
+        <li><b>🐾 Teléfono</b>: xxxx-xxxx</li>
+        <li><b>🐾 Dirección</b>: Av. Patito Modosito 123</li>
+      </ul>
       <Link href="/">Volver</Link>
     </main>
   );
