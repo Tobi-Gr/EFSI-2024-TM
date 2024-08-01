@@ -1,16 +1,14 @@
 "use client";
-//foto para el fondo: https://www.freepik.es/vector-gratis/coleccion-banderas-ondeando_1152871.htm#fromView=search&page=1&position=6&uuid=e074ce47-8139-4f19-8b24-c4020251f31f
 
 import { useEffect, useState } from 'react';
 import Image from "next/image";
 import styles from "./page.module.css";
 
-
 export default function Home() {
   const [countries, setCountries] = useState([]);
   const [error, setError] = useState(null);
   const [unusedCountries, setUnusedCountries] = useState([]);
-  const [currentCounty, setCurrentCountry] = useState(); // por el que se está preguntando
+  const [currentCountry, setCurrentCountry] = useState(); // por el que se está preguntando
   let options = [];
 
   useEffect(() => {
@@ -29,6 +27,7 @@ export default function Home() {
     };
     
     fetchCountries();
+    getRandomCountry();
   }, []);
 
   const getRandomCountry = () => { //Para conseguir del que va a ser la bandera y la respuesta correcta
@@ -37,7 +36,7 @@ export default function Home() {
     let selectedCountry = unusedCountries[randomIndex];
     setUnusedCountries(unusedCountries.filter((_, index) => index !== randomIndex));
     setCurrentCountry(selectedCountry);
-    console.log("país seleccionado: ", currentCounty);
+    console.log("país seleccionado: ", currentCountry);
   };
 
   const getRandomNumber = (max) => { //no incluye a max
@@ -50,14 +49,14 @@ export default function Home() {
     for (let i = 0; i< correctAnswerPos; i++) {
       do {
         var randomIndex = getRandomNumber(countries.length);
-      } while (options.includes(countries[randomIndex]) || countries[randomIndex] == currentCounty);
+      } while (options.includes(countries[randomIndex]) || countries[randomIndex] == currentCountry);
       options.push(countries[randomIndex])
     }
-    options.push(currentCounty);
+    options.push(currentCountry);
     for (let i = correctAnswerPos; i < 4; i++) {
       do {
         randomIndex = getRandomNumber(countries.length);
-      } while (options.includes(countries[randomIndex]) || countries[randomIndex] == currentCounty);
+      } while (options.includes(countries[randomIndex]) || countries[randomIndex] == currentCountry);
       options.push(countries[randomIndex])
     }
     console.log("opciones: ", options);
@@ -67,11 +66,12 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <button onClick={getRandomCountry}>1st Press me</button>
-      {currentCounty && currentCounty.flag && (
+      {currentCountry && currentCountry.flag && (
       <Image
-        src={currentCounty.flag}
+        src={currentCountry.flag}
         height={500}
         width={700}
+        alt="bandera"
       />
     )}
       <button onClick={getOptions}>2nd Press me</button>
