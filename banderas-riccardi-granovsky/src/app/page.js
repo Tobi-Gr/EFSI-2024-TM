@@ -85,6 +85,18 @@ export default function Home() {
     }
   }, [currentCountry]);
 
+  // const checkAnswer = (index) => { 
+  //   let selectedCountry = options[index]
+  //   if (selectedCountry = currentCountry){
+  //     setScore(prevScore => prevScore + 10);
+  //     console.log("respuesta correcta")
+  //   }
+  //   else{
+  //     setScore(prevScore => prevScore - 1);
+  //     console.log("respuesta incorrecta")
+  //   }
+  // };
+
   return (
     <main className={styles.main}>
       {/* Muestra si hay bandera */}
@@ -100,7 +112,7 @@ export default function Home() {
 
           {/*usar el index para ver q país clickearon*/}
           {options.map((option, index) => ( 
-            <button key={index} className={styles.btn} onClick={() => console.log(currentCountry)}>{option?.name}</button>
+            <button className={styles.btn} onClick={checkAnswer(index)}>{option?.name}</button>
           ))}
         </div>
       )}
