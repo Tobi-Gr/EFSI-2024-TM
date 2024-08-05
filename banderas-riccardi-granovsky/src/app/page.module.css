@@ -14,7 +14,7 @@
   display:flex;
   flex-direction: column;
   align-items: center;
-  padding: 2.5em
+  padding: 2.5em;
 }
 
 .flag {
@@ -26,10 +26,46 @@
 
 .btn{
   width: 15em;
-  color: whitesmoke;
-  background-color:darkslategrey;
   border: none;
-  font-size: xx-large;
   margin-bottom: 1em;
+}
+
+.text{
+  background-color:darkslategrey;
+  color: whitesmoke;
   padding: 0.5em;
+  font-size: xx-large;
+  font-weight: 100;
+}
+
+.score {
+  position: fixed;
+  left: 0.5em; 
+  padding: 0.5em 1em;
+}
+
+.endMessage{
+  display: flex;
+  flex-direction: column;
+  background: darkslategrey;
+  color:whitesmoke;
+  width: 50em;
+  height: 25em;
+  margin: 2.5em;
+  align-items: center;
+  justify-content: center;
+}
+
+.gameOver{
+  font-size: xx-large;
+  font-weight: 100;
+}
+
+.endScore{
+  font-size: 5em;
+  font-weight: 100;
+}
+
+.detail {
+  font-weight: 100;
 }

@@ -20,16 +20,47 @@ export default function Home() {
           throw new Error("Request invalid");
         }
         const json_data = await res.json();
-        setCountries(json_data.data);
-        setUnusedCountries(json_data.data);
+  
+        //procesar la data
+        const updatedData = json_data.data.map(country => {
+          // Cambiar las bandera inválidas
+          if (country.name === "Vatican City State (Holy See)") {
+            return {
+              ...country,
+              flag: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Flag_of_Vatican_City_%282023%E2%80%93present%29.svg"
+            };
+          }
+          
+          if (country.name === "Sao Tome and Principe")
+          {
+            return {
+              ...country,
+              flag: "https://upload.wikimedia.org/wikipedia/commons/0/0a/Flag_of_S%C3%A3o_Tom%C3%A9_and_Pr%C3%ADncipe.svg"
+            };
+          }
+
+          // Devolver las islas malvinas
+          if (country.name === "Falkland Islands") {
+            return {
+              ...country,
+              name: "Islas Malvinas"
+            };
+          }
+  
+          return country;
+        });
+  
+        setCountries(updatedData);
+        setUnusedCountries(updatedData);
       } catch (error) {
-        //setError(error.message);
+        // setError(error.message);
         console.log(error.message);
       }
     };
-    
+  
     fetchCountries();
   }, []);
+  
 
   useEffect(() => {
     if (countries.length > 0) {
@@ -85,35 +116,49 @@ export default function Home() {
     }
   }, [currentCountry]);
 
-  // const checkAnswer = (index) => { 
-  //   let selectedCountry = options[index]
-  //   if (selectedCountry = currentCountry){
-  //     setScore(prevScore => prevScore + 10);
-  //     console.log("respuesta correcta")
-  //   }
-  //   else{
-  //     setScore(prevScore => prevScore - 1);
-  //     console.log("respuesta incorrecta")
-  //   }
-  // };
+ const checkAnswer = (index) => { 
+   let selectedCountry = options[index]
+   if (selectedCountry === currentCountry){
+     setScore(prevScore => prevScore + 10);
+   }
+   else{
+     setScore(prevScore => prevScore - 1);
+   }
+   setUpQuestion();
+ };
 
   return (
     <main className={styles.main}>
-      {/* Muestra si hay bandera */}
-      {currentCountry?.flag && (
-        <div className={styles.question}>
-          <Image
-            src={currentCountry.flag}
-            height={500}
-            width={700}
-            alt="bandera"
-            className={styles.flag}
+      {currentCountry?.flag ? 
+      (
+        // Muestra si hay bandera
+        <div>
+          <h2 className={`${styles.score} ${styles.text}`}>Score: {score}</h2>
+          <div className={styles.question}>
+            <Image
+              src={currentCountry.flag}
+              height={500}
+              width={700}
+              alt="bandera"
+              className={styles.flag}
             />
-
-          {/*usar el index para ver q país clickearon*/}
-          {options.map((option, index) => ( 
-            <button className={styles.btn} onClick={checkAnswer(index)}>{option?.name}</button>
-          ))}
+            {options.map((option, index) => (
+              <button
+              key={index}
+              className={`${styles.btn} ${styles.text}`}
+              onClick={() => checkAnswer(index)}
+              >
+                {option?.name}
+              </button>
+            ))}
+          </div>
+        </div>
+      ) : (
+        // Muestra si no hay bandera
+        <div className={styles.endMessage}>
+          <h2 className={styles.gameOver}>Terminaste!</h2>
+          <h1 className={styles.endScore}>{score}</h1>
+          <h4 className={styles.detail}>Recarga la página para volver a empezar</h4>
         </div>
       )}
     </main>
