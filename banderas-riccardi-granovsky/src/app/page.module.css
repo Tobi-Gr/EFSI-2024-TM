@@ -1,5 +1,6 @@
 .main {
   display: flex;
+  justify-content: center;
   background-image: url('./../assets/banderas-fondo.jpg');
   background-repeat: repeat;
   background-size: 20%; /* tamaño de la imagen */
@@ -7,4 +8,28 @@
   width: 100vw; /*para que ocupe el ancho y alto completo*/
   height: 100vh;
   overflow: hidden; /*no se van del borde de la pantalla*/
+}
+
+.question{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2.5em
+}
+
+.flag {
+  width: auto;
+  height: 25em;
+  object-fit: contain;
+  margin-bottom: 3em;
+}
+
+.btn{
+  width: 15em;
+  color: whitesmoke;
+  background-color:darkslategrey;
+  border: none;
+  font-size: xx-large;
+  margin-bottom: 1em;
+  padding: 0.5em;
 }

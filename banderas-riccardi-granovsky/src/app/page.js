@@ -89,16 +89,18 @@ export default function Home() {
     <main className={styles.main}>
       {/* Muestra si hay bandera */}
       {currentCountry?.flag && (
-        <div>
+        <div className={styles.question}>
           <Image
             src={currentCountry.flag}
             height={500}
             width={700}
             alt="bandera"
+            className={styles.flag}
             />
 
-          {options.map((option, index) => (
-            <button key={index}>{option?.name}</button>
+          {/*usar el index para ver q país clickearon*/}
+          {options.map((option, index) => ( 
+            <button key={index} className={styles.btn} onClick={() => console.log(currentCountry)}>{option?.name}</button>
           ))}
         </div>
       )}
