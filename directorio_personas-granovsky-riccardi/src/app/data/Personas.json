@@ -1,5 +1,5 @@
 
-export default Personas = [
+[
   {
     "id":"1",
     "nombre":"Sinclair",
@@ -419,5 +419,5 @@ export default Personas = [
     "apellido":"Kilmary",
     "email":"rkilmary1n@businessinsider.com",
     "edad":"48"
-  },
-];
+  }
+]
