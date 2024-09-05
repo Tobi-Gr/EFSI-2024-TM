@@ -1,0 +1,57 @@
+:root {
+  --negro: #050315;
+  --blanco: #fbfbfe;
+  --azul: #211b8b;
+  --celeste: #dedcff;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  min-height: 100vh;
+  background-color: var(--blanco);
+}
+
+.cardPersona {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--celeste);
+  color: var(--negro);
+  border-radius: 5%;
+  width:fit-content;
+  padding-left: 1.5%;
+  padding-right: 1.5%;
+  height:fit-content;
+  margin: 1em;
+}
+
+.cardPersona:hover{
+  background-color: var(--azul);
+  color: var(--blanco);
+
+}
+
+.cardNombre {
+  font-size:large;
+}
+
+.cardsContainer{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.titleContainer{
+  display:flex;
+  width: auto;
+  justify-content: center;
+}
+
+.navbar {
+  width: 100%;
+  background-color: #555;
+  overflow: auto;
+}
