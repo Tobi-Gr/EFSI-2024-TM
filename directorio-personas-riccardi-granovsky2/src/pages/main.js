@@ -9,7 +9,7 @@ function MainScreen(navigation) {
         <Titulo texto="Directorio de personas"/>
         <div className="cardsContainer">
           {Personas.map(persona => (
-              <BotonPersona key={persona.id} persona={persona}/>            
+              <BotonPersona persona={persona}/>            
           ))}
         </div>
       </main>

@@ -59,9 +59,23 @@ function EstadisticasScreen(navigation) {
   return (
     <div className="main">
       <Titulo texto="Estadísticas"/>
-      <CardEstadistica numero={contarMayoresA(35)} texto="personas mayores a 35 años"/>
-      <CardEstadistica numero={mayorEdad} texto="es la mayor edad"/>
-      <CardEstadistica numero={menorEdad} texto="es la menor edad"/>
+      <div className='cardsEstContainer'>
+        <CardEstadistica numero={contarMayoresA(35)} texto="personas mayores a 35 años"/>
+        <CardEstadistica numero={mayorEdad} texto="es la mayor edad"/>
+        <CardEstadistica numero={menorEdad} texto="es la menor edad"/>        
+      </div>
+      <h3>Las personas con {mayorEdad} años son: </h3>
+      <ul>
+        {personasMayores.map(persona => (
+          <li>{persona}</li>
+        ))}
+      </ul>
+      <h3>Las personas con {menorEdad} años son: </h3>
+      <ul>
+        {personasMenores.map(persona => (
+          <li>{persona}</li>
+        ))}
+      </ul>
     </div>
   );
 }

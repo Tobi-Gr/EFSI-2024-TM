@@ -65,7 +65,7 @@ code {
   margin-top: 10px;
 }
 
-ul {
+.ul-navbar {
   position: fixed;
   top: 0;
   width: 100%;
@@ -76,7 +76,7 @@ ul {
   background-color: transparent;
 }
 
-li {
+.li-navbar {
   float: left;
 }
 
@@ -92,4 +92,10 @@ li a {
 
 li a:hover {
   background-color: var(--celeste);
+}
+
+.cardsEstContainer{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
