@@ -1,9 +1,11 @@
 import React from 'react';
+import {Link } from "react-router-dom";
 
 const botonPersona = ({ persona }) => {
+  
   return (
     <div className="cardPersona">
-            <h1 className="cardNombre">{persona.nombre + " " + persona.apellido}</h1>
+        <Link className="cardNombre" to={"/persona/" + persona.id}>{persona.nombre + " " + persona.apellido}</Link>
     </div>
   );
 };
