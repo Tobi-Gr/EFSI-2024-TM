@@ -25,7 +25,8 @@ function Productos() {
             'categoria': 'Personajes',
             'foto1': batduck,
             'foto2': batduck2,
-            'foto3': batduck3
+            'foto3': batduck3,
+            'precio': '$100'
         },
         { 'id': 1, 
             'nombre':'Amarillo clasico', 
@@ -33,7 +34,8 @@ function Productos() {
             'categoria': 'Colores',
             'foto1': clasico,
             'foto2': clasico2,
-            'foto3': clasico3
+            'foto3': clasico3,
+            'precio': '$100'
         },
         { 'id': 2, 
             'nombre':'Freddy Merducky', 
@@ -41,7 +43,9 @@ function Productos() {
             'categoria': 'Celebridades',
             'foto1': freddy,
             'foto2': freddy2,
-            'foto3': freddy3
+            'foto3': freddy3,
+            'precio': '$100'
+
         },
         { 'id': 3, 
             'nombre':'Pato de la Libertad', 
@@ -49,7 +53,9 @@ function Productos() {
             'categoria': 'Paises',
             'foto1': libertad,
             'foto2': libertad2,
-            'foto3': libertad3
+            'foto3': libertad3,
+            'precio': '$100'
+
         },
         { 'id': 4, 
             'nombre':'Harry Ponder', 
@@ -57,15 +63,18 @@ function Productos() {
             'categoria': 'Personajes',
             'foto1': potter,
             'foto2': potter2,
-            'foto3': potter3
+            'foto3': potter3,
+            'precio': '$100'
         },
         { 'id': 5, 
             'nombre':'Spiderduck', 
-            'descripcion': '',
+            'descripcion': 'Su amigable vecino Spiderduck, nuestro aracnido favorito. Con sus habilidades se columpia por el negocio salvando a nuestros patos de los malos.',
             'categoria': 'Personajes',
             'foto1': spider,
             'foto2': spider2,
-            'foto3': spider3
+            'foto3': spider3,
+            'precio': '$100'
+
         },
     ];
   }

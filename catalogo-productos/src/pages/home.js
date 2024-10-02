@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Datos from './../Datos';
 
-function MainScreen() {
+function MainScreen() { 
   const patos = Datos();
   const [slideIndex, setSlideIndex] = useState(1);
 
@@ -17,19 +17,24 @@ function MainScreen() {
   };
 
   useEffect(() => {
-    const slides = document.getElementsByClassName("mySlides");
-    const dots = document.getElementsByClassName("dot");
+    if (patos.length > 0) { //solo corre si ya cargó a los patos
+      const slides = document.getElementsByClassName("mySlides");
+      const dots = document.getElementsByClassName("dot");
 
-    for (let i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";
-    }
-    for (let i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
+      // esconde las slides en las que no estás
+      for (let i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      // Le saca la clase 'activa' a todos los puntos
+      for (let i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
 
-    slides[slideIndex - 1].style.display = "block";
-    dots[slideIndex - 1].className += " active";
-  }, [slideIndex, patos.length]); // Update when slideIndex or patos changes
+      // muestra la slide actual y activa el punto actual
+      slides[slideIndex - 1].style.display = "block";
+      dots[slideIndex - 1].className += " active";
+    }
+  }, [slideIndex, patos]);
 
   return (
     <main className="main">
@@ -49,13 +54,19 @@ function MainScreen() {
       <br />
       
       <div style={{ textAlign: 'center' }}>
-        {patos.map((_, index) => (
+      {patos ? (
+        patos.map((_, index) => (
           <span
             className="dot"
             key={index}
             onClick={() => currentSlide(index + 1)}
           ></span>
-        ))}
+        ))
+      ) : (
+        <p>Espera a que carge</p>
+      )}
+        
+        
       </div>
     </main>
   );
