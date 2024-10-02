@@ -1,71 +1,62 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Datos from './../Datos';
 
-//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_slideshow
-function MainScreen(navigation) {
+function MainScreen() {
   const patos = Datos();
-  let slideIndex = 1;
-  showSlides(slideIndex);
+  const [slideIndex, setSlideIndex] = useState(1);
 
-  function plusSlides(n) {
-    showSlides(slideIndex += n);
-  }
+  const plusSlides = (n) => {
+    setSlideIndex((prevIndex) => {
+      const newIndex = prevIndex + n;
+      return newIndex > patos.length ? 1 : newIndex < 1 ? patos.length : newIndex;
+    });
+  };
 
-  function currentSlide(n) {
-    showSlides(slideIndex = n);
-  }
+  const currentSlide = (n) => {
+    setSlideIndex(n);
+  };
 
-  function showSlides(n) {
-    let i;
-    let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
-    if (n > slides.length) {slideIndex = 1}    
-    if (n < 1) {slideIndex = slides.length}
-    for (i = 0; i < slides.length; i++) {
-      slides[i].style.display = "none";  
+  useEffect(() => {
+    const slides = document.getElementsByClassName("mySlides");
+    const dots = document.getElementsByClassName("dot");
+
+    for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
     }
-    for (i = 0; i < dots.length; i++) {
+    for (let i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
-    slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
-  }
+
+    slides[slideIndex - 1].style.display = "block";
+    dots[slideIndex - 1].className += " active";
+  }, [slideIndex, patos.length]); // Update when slideIndex or patos changes
+
   return (
     <main className="main">
       <h1 className='titulo'>The ducking shop</h1>
       
-      <div class="slideshow-container">
-        {/* pasarlo a un map */}
-        <div class="mySlides fade">
-          <div class="numbertext">1 / 3</div>
-          <img src="img_nature_wide.jpg" style="width:100%"/>
-          <div class="text">Caption Text</div>
-        </div>
-
-        <div class="mySlides fade">
-          <div class="numbertext">2 / 3</div>
-          <img src="img_snow_wide.jpg" style="width:100%"/>
-          <div class="text">Caption Two</div>
-        </div>
-
-        <div class="mySlides fade">
-          <div class="numbertext">3 / 3</div>
-          <img src="img_mountains_wide.jpg" style="width:100%"/>
-          <div class="text">Caption Three</div>
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">❮</a>
-        <a class="next" onclick="plusSlides(1)">❯</a>
-
-        </div>
-        <br/>
-
-        <div style="text-align:center">
-          <span class="dot" onclick="currentSlide(1)"></span> 
-          <span class="dot" onclick="currentSlide(2)"></span> 
-          <span class="dot" onclick="currentSlide(3)"></span> 
-        </div>
-
+      <div className="slideshow-container">
+        {patos.map((pato, index) => (
+          <div className="mySlides fade" key={index}>
+            <img src={pato.foto1} alt={pato.nombre} style={{ width: "100%" }} />
+            <div className="text">{pato.nombre}</div>
+          </div>
+        ))}
+        
+        <a className="prev" onClick={() => plusSlides(-1)}>❮</a>
+        <a className="next" onClick={() => plusSlides(1)}>❯</a>
+      </div>
+      <br />
+      
+      <div style={{ textAlign: 'center' }}>
+        {patos.map((_, index) => (
+          <span
+            className="dot"
+            key={index}
+            onClick={() => currentSlide(index + 1)}
+          ></span>
+        ))}
+      </div>
     </main>
   );
 }
