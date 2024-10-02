@@ -12,8 +12,10 @@ const CardProducto = ({ producto }) => {
         src={hovered ? producto.foto2 : producto.foto1} 
         alt={producto.nombre}
       />
-      <h2>{producto.nombre}</h2>
-      <h4>{producto.precio}</h4>
+      <div className='textoCard'>
+        <h2>{producto.nombre}</h2>
+        <h4>{producto.precio}</h4>
+      </div>
     </div>
   );
 };

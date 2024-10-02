@@ -171,7 +171,7 @@ img {vertical-align: middle;}
 }
 
 .imgCard:hover {
-  opacity: 0.7;
+  opacity: 0.5;
 }
 
 .productosContainer{
@@ -181,4 +181,8 @@ img {vertical-align: middle;}
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap; 
+}
+
+.textoCard{
+  margin-left: 7%;
 }
