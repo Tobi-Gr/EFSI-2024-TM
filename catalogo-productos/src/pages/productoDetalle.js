@@ -2,7 +2,6 @@ import Datos from '../Datos';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import FotosProducto from '../components/ImagenesProducto';
-import CardProducto from '../components/CardProducto'; //abajo van a haber algunos random
 
 function ProductoDetalleScreen() {
   const [patos, setPatos] = useState([]);
@@ -26,7 +25,11 @@ function ProductoDetalleScreen() {
       ) : (
         <div className='contenedor-detalleProducto'>
           <FotosProducto {...pato}/>
-          <h1 className='titulo'>{pato.nombre}</h1>
+          <div className='contenedor-textoProducto'>
+            <h1 className='titulo'>{pato.nombre}</h1>
+            <h3 className='descripción'>{pato.descripcion}</h3>
+            <h3>{pato.precio}</h3>
+          </div>
         </div>
       )}
     </main>

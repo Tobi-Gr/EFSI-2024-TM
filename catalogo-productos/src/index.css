@@ -218,10 +218,20 @@ img {vertical-align: middle;}
 /*DETALLE PRODUCTO*/
 .contenedor-detalleProducto{
   display: flex;
-  flex-direction: row;
+  width: 100%;
+  align-items:flex-start;
+}
+
+.contenedor-textoProducto{
+  width: 50%;
+  justify-content: flex-start;
 }
 
 /*imagenesProducto*/
+.detalleProducto{
+  margin: 2em;
+}
+
 .fotoGrande img {
   width: 40em;
 }
