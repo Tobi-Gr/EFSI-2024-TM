@@ -242,3 +242,14 @@ img {vertical-align: middle;}
 .thumbnail:hover {
   transform: scale(1.1); /* Efecto hover */
 }
+
+/*contacto*/
+
+.contacto {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  min-height: 100vh;
+  background-color: var(--blanco);
+  align-items: center;
+}
