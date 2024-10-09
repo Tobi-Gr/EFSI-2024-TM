@@ -162,10 +162,17 @@ img {vertical-align: middle;}
   margin-bottom: 2.5%;
   margin: 3%;
   padding-bottom: 1%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* sombra */
+  border-radius: 5%;
+  text-decoration: none;
+  color: var(--negro);
+}
+
+.cardProducto:hover{
+  box-shadow: 5px 4px 8px rgba(0, 0, 0, 0.2); /* sombra */
 }
 
 .imgCard {
+  border-radius: 5%;
   width: 100%;
   transition: opacity 0.3s ease; /* animación */
 }
@@ -185,4 +192,32 @@ img {vertical-align: middle;}
 
 .textoCard{
   margin-left: 7%;
+}
+
+/*DETALLE PRODUCTO*/
+.contenedor-detalleProducto{
+  display: flex;
+  flex-direction: row;
+}
+
+/*imagenesProducto*/
+.fotoGrande img {
+  width: 40em;
+}
+
+.contenedorThumbnail {
+  display: flex;
+  margin-top: 20px;
+}
+
+.thumbnail {
+  width: 4em;
+  height: auto;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1); /* Efecto hover */
 }

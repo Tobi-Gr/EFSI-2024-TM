@@ -19,7 +19,7 @@ import spider3 from './assets/patos/spiderduck3.jpg';
 
 function Productos() {
     return [
-        { 'id': 0, 
+        { 'id': '0', 
             'nombre':'BatDuck', 
             'descripcion': 'El misterioso heroe de The ducking shop. Él solo aparece a la noche para salvar a patos en apuros, asustando a todos los villanos.',
             'categoria': 'Personajes',
@@ -28,7 +28,7 @@ function Productos() {
             'foto3': batduck3,
             'precio': '$100'
         },
-        { 'id': 1, 
+        { 'id': '1', 
             'nombre':'Amarillo clasico', 
             'descripcion': 'El pato amarillo original que empezó todo. Puro y simple, nunca pasa de moda. Es la mejor manera de empezar tu colección, porque no puede faltar en ninguna!.',
             'categoria': 'Colores',
@@ -37,7 +37,7 @@ function Productos() {
             'foto3': clasico3,
             'precio': '$100'
         },
-        { 'id': 2, 
+        { 'id': '2', 
             'nombre':'Freddy Merducky', 
             'descripcion': 'El famoso vocalista de la banda Queens. Tienen canciones tan espectaculares como Bohemian Quacksody, Another One Eats the Crumbs y Radio Quack Quack.',
             'categoria': 'Celebridades',
@@ -47,17 +47,17 @@ function Productos() {
             'precio': '$100'
 
         },
-        { 'id': 3, 
+        { 'id': '3', 
             'nombre':'Pato de la Libertad', 
             'descripcion': 'La conocida estatua estadounidense. Viene desde New York para traerle libertad a todos los patos.',
-            'categoria': 'Paises',
+            'categoria': 'Monumentos',
             'foto1': libertad,
             'foto2': libertad2,
             'foto3': libertad3,
             'precio': '$100'
 
         },
-        { 'id': 4, 
+        { 'id': '4', 
             'nombre':'Harry Ponder', 
             'descripcion': 'El encantador protagonista de la famosa saga de libros y peliculas. Lo que pocos saben, es que en realidad es un pato cualquiera (sin ningún tipo de magia) haciendo cosplay. A pesar de eso, es un buen regalo para cualquier fan.',
             'categoria': 'Personajes',
@@ -66,7 +66,7 @@ function Productos() {
             'foto3': potter3,
             'precio': '$100'
         },
-        { 'id': 5, 
+        { 'id': '5', 
             'nombre':'Spiderduck', 
             'descripcion': 'Su amigable vecino Spiderduck, nuestro aracnido favorito. Con sus habilidades se columpia por el negocio salvando a nuestros patos de los malos.',
             'categoria': 'Personajes',
