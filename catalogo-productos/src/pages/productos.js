@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import Datos from './../Datos';
+import React, { useEffect, useState } from 'react';
 import CardProducto from '../components/CardProducto';
 import Search from '../components/Search';
 
@@ -31,7 +31,7 @@ function ProductosScreen() {
       </div>
       <div className='productosContainer'>
         {patosFiltrados.map((pato, index) => (
-          <CardProducto key={index} producto={pato} />
+          <CardProducto key={index} producto={pato} />        
         ))}
       </div>
     </main>

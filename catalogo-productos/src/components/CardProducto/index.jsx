@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+
 
 const CardProducto = ({ producto }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <div className="cardProducto">
+    <Link to={'detalle/' + producto.id} className="cardProducto">
       <img 
         className="imgCard" 
         onMouseEnter={() => setHovered(true)} 
@@ -16,7 +18,7 @@ const CardProducto = ({ producto }) => {
         <h2>{producto.nombre}</h2>
         <h4>{producto.precio}</h4>
       </div>
-    </div>
+    </Link>
   );
 };
 
