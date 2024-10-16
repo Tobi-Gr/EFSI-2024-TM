@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 
 const FotosProducto = (producto) => {
-    const [selectedImage, setSelectedImage] = useState(producto.foto1);
-    const fotos = [
-        producto.foto1,
-        producto.foto2,
-        producto.foto3
-    ];
+    const [selectedImage, setSelectedImage] = useState(producto.images[0]);
 
 
   return (
@@ -15,7 +10,7 @@ const FotosProducto = (producto) => {
         <img src={selectedImage} alt="Imagen del producto" />
       </div>
       <div className="contenedorThumbnail">
-        {fotos.map((image, index) => (
+        {producto.images.map((image, index) => (
           <img
             key={index}
             src={image}

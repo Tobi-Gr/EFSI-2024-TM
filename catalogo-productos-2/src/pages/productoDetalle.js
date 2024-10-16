@@ -1,22 +1,18 @@
-import Datos from '../Datos';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useProducts } from './../productsContext';
 import FotosProducto from '../components/ImagenesProducto';
 
 function ProductoDetalleScreen() {
-  const [productos, setProductos] = useState([]);
+  const {productsData = [] } = useProducts() || {};
+
   const [producto, setProducto] = useState();
   const { id } = useParams();
 
-  useEffect(() => {
-    const datos = Datos();
-    setProductos(datos);
-  }, []);
-
   useEffect(() => {  
-    const patoEncontrado = productos.find(p => p.id === id);
-    setProducto(patoEncontrado);
-  }, [productos, id]);
+    const productoEncontrado = productsData.find(p => p.id === parseInt(id, 10));
+    setProducto(productoEncontrado);
+  }, [productsData, id]);
 
   return (
     <main className="main">
@@ -26,9 +22,9 @@ function ProductoDetalleScreen() {
         <div className='contenedor-detalleProducto'>
           <FotosProducto {...producto}/>
           <div className='contenedor-textoProducto'>
-            <h1 className='titulo'>{producto.nombre}</h1>
-            <h3 className='descripción'>{producto.descripcion}</h3>
-            <h3>{producto.precio}</h3>
+            <h1 className='titulo'>{producto.title}</h1>
+            <h3 className='descripción'>{producto.description}</h3>
+            <h3>${producto.price}</h3>
           </div>
         </div>
       )}

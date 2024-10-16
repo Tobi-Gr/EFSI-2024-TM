@@ -11,12 +11,13 @@ const CardProducto = ({ producto }) => {
         className="imgCard" 
         onMouseEnter={() => setHovered(true)} 
         onMouseLeave={() => setHovered(false)}
-        src={hovered ? producto.foto2 : producto.foto1} 
+        src={producto.images[0]} 
+        // src={hovered ? producto.images[1] : producto.images[0]} 
         alt={producto.nombre}
       />
       <div className='textoCard'>
         <h2>{producto.title}</h2>
-        <h4>{producto.price}</h4>
+        <h4>${producto.price}</h4>
       </div>
     </Link>
   );
