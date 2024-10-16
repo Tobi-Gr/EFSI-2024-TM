@@ -9,7 +9,7 @@ function ProductoDetalleScreen() {
   const { id } = useParams();
 
   useEffect(() => {
-    const datos = Datos(); 
+    const datos = Datos();
     setProductos(datos);
   }, []);
 

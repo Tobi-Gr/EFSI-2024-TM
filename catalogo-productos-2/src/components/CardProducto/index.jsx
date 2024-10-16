@@ -15,8 +15,8 @@ const CardProducto = ({ producto }) => {
         alt={producto.nombre}
       />
       <div className='textoCard'>
-        <h2>{producto.nombre}</h2>
-        <h4>{producto.precio}</h4>
+        <h2>{producto.title}</h2>
+        <h4>{producto.price}</h4>
       </div>
     </Link>
   );

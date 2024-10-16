@@ -1,90 +1,90 @@
-import React, { useEffect, useState, useContext } from 'react';
-import Datos from './../Datos';
+import React, { useEffect, useState } from 'react';
 import { useProducts } from './../productsContext';
 import CardProducto from '../components/CardProducto';
 
+//NO PUEDE HACER UN LENGTH DE PRODUCTS DATA ¿?¿?¿?¿?
 function MainScreen() { 
-  const { products } = useProducts();
+  const { productsData } = useProducts() || {};
   const [slideIndex, setSlideIndex] = useState(1);
 
   const plusSlides = (n) => {
     setSlideIndex((prevIndex) => {
       const newIndex = prevIndex + n;
-      return newIndex > products.length ? 1 : newIndex < 1 ? products.length : newIndex;
+      const totalProducts = productsData.length || 0;  
+      return newIndex > totalProducts ? 1 : newIndex < 1 ? totalProducts : newIndex;
     });
-  };
+  }
 
   const currentSlide = (n) => {
     setSlideIndex(n);
   };
 
   useEffect(() => {
-    //hacer que agarre seis productos random para el carrousel    
-      console.log(products);
-    // if (productos.length > 0) { //solo corre si ya cargó a los patos
-    //   const slides = document.getElementsByClassName("mySlides");
-    //   const dots = document.getElementsByClassName("dot");
-
-    //   // esconde las slides en las que no estás
-    //   for (let i = 0; i < slides.length; i++) {
-    //     slides[i].style.display = "none";
-    //   }
-    //   // Le saca la clase 'activa' a todos los puntos
-    //   for (let i = 0; i < dots.length; i++) {
-    //     dots[i].className = dots[i].className.replace(" active", "");
-    //   }
-
-    //   // muestra la slide actual y activa el punto actual
-    //   slides[slideIndex - 1].style.display = "block";
-    //   dots[slideIndex - 1].className += " active";
-    // }
-  }, [slideIndex, products]);
+        //hacer que agarre seis productos random para el carrousel    
+      if (productsData?.length > 0) { // Use optional chaining to avoid errors
+        const slides = document.getElementsByClassName("mySlides");
+        const dots = document.getElementsByClassName("dot");
+        // Hide all slides
+        for (let i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        // Remove 'active' class from all dots
+        for (let i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
+        }
+        // Show the current slide and activate the current dot
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+  }, [slideIndex, productsData]);
 
   return (
     <main className="main">
-      {/* <h1 className='titulo'>The ducking shop</h1>
+      <h1 className='titulo'>Lorem's</h1>
       
-      <div className="slideshow-container">
-        {productos.map((producto, index) => (
-          <div className="mySlides fade" key={index}>
-            <img src={producto.foto1} alt={producto.nombre} style={{ width: "100%" }} />
-            <div className="text">{producto.nombre}</div>
-          </div>
-        ))}
-        
-        <a className="prev" onClick={() => plusSlides(-1)}>❮</a>
-        <a className="next" onClick={() => plusSlides(1)}>❯</a>
-      </div>
-      <br />
-      
-      <div style={{ textAlign: 'center' }}>
-      {productos ? (
-        productos.map((_, index) => (
-          <span
-            className="dot"
-            key={index}
-            onClick={() => currentSlide(index + 1)}
-          ></span>
-        ))
+     {productsData.length > 0 ? (
+        <div className="slideshow-container">
+          {productsData.map((producto, index) => (
+            <div className="mySlides fade" key={index}>
+              <img src={producto.images[0]} alt={producto.title} style={{ width: "100%" }} />
+              <div className="text">{producto.title}</div>
+            </div>
+          ))}
+          
+          <a className="prev" onClick={() => plusSlides(-1)}>❮</a>
+          <a className="next" onClick={() => plusSlides(1)}>❯</a>
+        </div>
       ) : (
         <p>Espera a que cargen los productos</p>
       )}
-
-      <div>
-        {productos?
-          (
+      
+      <br />
+      
+      <div style={{ textAlign: 'center' }}>
+        {productsData.length > 0 ? (
+          productsData.map((_, index) => (
+            <span
+              className="dot"
+              key={index}
+              onClick={() => currentSlide(index + 1)}
+            ></span>
+          ))
+        ) : null}
+        
+        <div>
+          {productsData.length > 0 ? (
             <div>
-              {productos.map((producto, index) => (
+              {productsData.map((producto, index) => (
                 <CardProducto key={index} producto={producto} />        
               ))}
             </div>
-          )
-          : (<p>Espera a que cargen los productos</p>)}
+          ) : (
+            <p>Espera a que cargen los productos</p>
+          )}
+        </div>
       </div>
-        
-      </div> */}
     </main>
-  );
+  );  
 }
 
 export default MainScreen;

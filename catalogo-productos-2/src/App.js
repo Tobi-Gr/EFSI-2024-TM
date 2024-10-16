@@ -9,17 +9,17 @@ import { ProductsProvider } from './productsContext';
 function App() {
 
   return (
-    <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <ProductsProvider.Provider>
-              <Route index element={<HomeScreen />} />
-              <Route path='productos' element={<ProductosScreen />} />
-              <Route path='productos/detalle/:id' element={<ProductoDetalleScreen />} />
-            </ProductsProvider.Provider>
-          </Route>
-        </Routes>
-      </BrowserRouter>
+    <ProductsProvider>
+      <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+                <Route index element={<HomeScreen />} />
+                <Route path='productos' element={<ProductosScreen />} />
+                <Route path='productos/detalle/:id' element={<ProductoDetalleScreen />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+    </ProductsProvider>
   );
 }
 
