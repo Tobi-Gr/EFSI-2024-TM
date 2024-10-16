@@ -4,31 +4,31 @@ import { useParams } from 'react-router-dom';
 import FotosProducto from '../components/ImagenesProducto';
 
 function ProductoDetalleScreen() {
-  const [patos, setPatos] = useState([]);
-  const [pato, setPato] = useState();
+  const [productos, setProductos] = useState([]);
+  const [producto, setProducto] = useState();
   const { id } = useParams();
 
   useEffect(() => {
     const datos = Datos(); 
-    setPatos(datos);
+    setProductos(datos);
   }, []);
 
   useEffect(() => {  
-    const patoEncontrado = patos.find(p => p.id === id);
-    setPato(patoEncontrado);
-  }, [patos, id]);
+    const patoEncontrado = productos.find(p => p.id === id);
+    setProducto(patoEncontrado);
+  }, [productos, id]);
 
   return (
     <main className="main">
-      {!pato ? ( 
+      {!producto ? ( 
         <h1 className='titulo'>Cargando...</h1> 
       ) : (
         <div className='contenedor-detalleProducto'>
-          <FotosProducto {...pato}/>
+          <FotosProducto {...producto}/>
           <div className='contenedor-textoProducto'>
-            <h1 className='titulo'>{pato.nombre}</h1>
-            <h3 className='descripción'>{pato.descripcion}</h3>
-            <h3>{pato.precio}</h3>
+            <h1 className='titulo'>{producto.nombre}</h1>
+            <h3 className='descripción'>{producto.descripcion}</h3>
+            <h3>{producto.precio}</h3>
           </div>
         </div>
       )}

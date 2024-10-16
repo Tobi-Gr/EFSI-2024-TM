@@ -5,7 +5,7 @@
   --negro: #091818;
   --celeste: #96f8f7;
   --azul: #62c6e5;
-  --amarillo: #fbcf40;
+  --violeta: #b040fb;
 }
 
 body {
@@ -143,7 +143,7 @@ img {vertical-align: middle;}
 }
 
 .active, .dot:hover {
-  background-color: var(--azul);
+  background-color: var(--violeta);
 }
 
 /* animación */

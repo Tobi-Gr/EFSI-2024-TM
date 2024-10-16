@@ -13,7 +13,7 @@ const Layout = () => {
             </Link>
           </li>
           <li>
-            <h1 className="nombre-nav">The ducking shop</h1>
+            <h1 className="nombre-nav">Lorem's</h1>
           </li>
           <li>
             <Link to="/productos" className="item-nav">Productos</Link>

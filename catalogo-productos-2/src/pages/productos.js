@@ -4,23 +4,23 @@ import CardProducto from '../components/CardProducto';
 import Search from '../components/Search';
 
 function ProductosScreen() {
-  const [patos, setPatos] = useState([]);
-  const [patosFiltrados, setPatosFiltrados] = useState([]);
+  const [productos, setProductos] = useState([]);
+  const [productosFiltrados, setProductosFiltrados] = useState([]);
   
   useEffect(() => {
       const datos = Datos(); 
-      setPatos(datos);
-      setPatosFiltrados(datos);
+      setProductos(datos);
+      setProductosFiltrados(datos);
   }, []); 
 
   const handleSearch = (search) => {
     if (search) {
-      const results = patos.filter((dato) => 
+      const results = productos.filter((dato) => 
         dato.nombre.toLowerCase().includes(search.toLowerCase())
       );
-      setPatosFiltrados(results);
+      setProductosFiltrados(results);
     } else {
-      setPatosFiltrados(patos); // Restablece a todos los productos si no hay búsqueda
+      setProductosFiltrados(productos); // Restablece a todos los productos si no hay búsqueda
     }
   };
   return (
@@ -30,8 +30,8 @@ function ProductosScreen() {
         <Search onSearch={handleSearch} />
       </div>
       <div className='productosContainer'>
-        {patosFiltrados.map((pato, index) => (
-          <CardProducto key={index} producto={pato} />        
+        {productosFiltrados.map((producto, index) => (
+          <CardProducto key={index} producto={producto} />        
         ))}
       </div>
     </main>
