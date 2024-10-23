@@ -6,6 +6,12 @@ import { useProducts } from './../productsContext';
 
 function ProductosScreen() {
   const { productsData = [] } = useProducts() || {};
+  const [catgoriasSeleccionadas, setCategoriasSeleccionadas] = useState({
+    beauty: false,
+    fragances: false,
+    furniture: false,
+    groceries: false
+  })
   const [productosFiltrados, setProductosFiltrados] = useState([]);
 
   useEffect(() => {
@@ -23,12 +29,69 @@ function ProductosScreen() {
     }
   };
 
+  const handleCheckbox = (e) => {
+      console.log(e.target.value);
+      setCategoriasSeleccionadas({
+        ...catgoriasSeleccionadas,
+        [e.target.value]: e.target.checked,
+      });
+      // if(e.target.checked){
+      //     const resultadosCategoria = productsData.filter;
+      // }
+  }
+
+  //https://youtu.be/94CVSF0Gr-w?t=981
+
   return (
     <main className="main">
       <h1 className='titulo'>Productos</h1>
       <div className='busqueda'>
         <Search onSearch={handleSearch} />
       </div>
+      
+      <div>
+          <div className='input-checkbox'>
+              <input
+                onChange={handleCheckbox} 
+                    type="checkbox"
+                    name='categorias'
+                    value='groceries'
+                    id='groceries'
+                    />
+              <label htmlFor='groceries'>Alimentos</label>
+          </div>
+          <div className='input-checkbox'>
+              <input
+                onChange={handleCheckbox} 
+                    type="checkbox"
+                    name='categorias'
+                    value='beauty'
+                    id='beauty'
+                    />
+              <label htmlFor='Belleza'>Belleza</label>
+          </div>
+          <div className='input-checkbox'>
+              <input
+                onChange={handleCheckbox} 
+                    type="checkbox"
+                    name='categorias'
+                    value='fragances'
+                    id='fragances'
+                    />
+              <label htmlFor='fragances'>Fragancias</label>
+          </div>
+          <div className='input-checkbox'>
+              <input
+                onChange={handleCheckbox} 
+                    type="checkbox"
+                    name='categorias'
+                    value='furniture'
+                    id='furniture'
+                    />
+              <label htmlFor='furniture'>Muebles</label>
+          </div>
+      </div>
+
       <div className='productosContainer'>
         {productosFiltrados ? (
           productosFiltrados.map((producto, index) => (
