@@ -10,7 +10,7 @@ function MainScreen() {
   const plusSlides = (n) => {
     setSlideIndex((prevIndex) => {
       const newIndex = prevIndex + n;
-      const totalProducts = productsData.length || 0;  
+      const totalProducts = productsData.length || 0;
       return newIndex > totalProducts ? 1 : newIndex < 1 ? totalProducts : newIndex;
     });
   }

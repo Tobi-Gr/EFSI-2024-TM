@@ -1,4 +1,4 @@
-import Datos from './../Datos';
+// import Datos from './../Datos';
 import React, { useEffect, useState } from 'react';
 import CardProducto from '../components/CardProducto';
 import Search from '../components/Search';

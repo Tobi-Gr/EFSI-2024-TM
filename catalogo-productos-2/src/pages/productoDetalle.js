@@ -9,10 +9,14 @@ function ProductoDetalleScreen() {
   const [producto, setProducto] = useState();
   const { id } = useParams();
 
-  useEffect(() => {  
+  useEffect(() => {
+    console.log("ID del producto:", id);
+    console.log("Datos de productos:", productsData);  
     const productoEncontrado = productsData.find(p => p.id === parseInt(id, 10));
+    console.log('productoEncontrado:', productoEncontrado)
     setProducto(productoEncontrado);
   }, [productsData, id]);
+
 
   return (
     <main className="main">
@@ -20,7 +24,7 @@ function ProductoDetalleScreen() {
         <h1 className='titulo'>Cargando...</h1> 
       ) : (
         <div className='contenedor-detalleProducto'>
-          <FotosProducto {...producto}/>
+          <FotosProducto {...producto} src={producto.images[0]}/>
           <div className='contenedor-textoProducto'>
             <h1 className='titulo'>{producto.title}</h1>
             <h3 className='descripción'>{producto.description}</h3>
