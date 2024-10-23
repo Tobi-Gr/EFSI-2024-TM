@@ -6,7 +6,7 @@ import { useProducts } from './../productsContext';
 
 function ProductosScreen() {
   const { productsData = [] } = useProducts() || {};
-  const [catgoriasSeleccionadas, setCategoriasSeleccionadas] = useState({
+  const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState({
     beauty: false,
     fragances: false,
     furniture: false,
@@ -29,16 +29,20 @@ function ProductosScreen() {
     }
   };
 
-  const handleCheckbox = (e) => {
-      console.log(e.target.value);
-      setCategoriasSeleccionadas({
-        ...catgoriasSeleccionadas,
+const handleCheckbox = (e) => {
+    console.log(e.target.value);
+    setCategoriasSeleccionadas({
+        ...categoriasSeleccionadas,
         [e.target.value]: e.target.checked,
-      });
-      // if(e.target.checked){
-      //     const resultadosCategoria = productsData.filter;
-      // }
-  }
+    });
+    if (e.target.checked) {
+        const resultadosCategoria = productsData.filter(item => item.language === e.target.value);
+        setProductosFiltrados(prev => [...prev, ...resultadosCategoria]);
+    } else {
+        const resultadosCategoria = productosFiltrados.filter(item => item.language !== e.target.value);
+        setProductosFiltrados(resultadosCategoria);
+    }
+};
 
   //https://youtu.be/94CVSF0Gr-w?t=981
 
