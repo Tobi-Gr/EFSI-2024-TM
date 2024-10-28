@@ -16,7 +16,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--blanco);
+  background-color: var(--celeste);
 }
 
 code {
@@ -293,4 +293,22 @@ img {vertical-align: middle;}
   flex-wrap: wrap;
   justify-content: space-evenly;
   width: 100%;
+}
+
+/*filtro en página productos*/
+.wrapper {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.select {
+  margin-bottom: 20px;
+}
+
+.custom-select {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
 }

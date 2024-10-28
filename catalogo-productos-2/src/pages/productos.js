@@ -1,112 +1,67 @@
-// import Datos from './../Datos';
-import React, { useEffect, useState } from 'react';
-import CardProducto from '../components/CardProducto';
-import Search from '../components/Search';
-import { useProducts } from './../productsContext';
+import React, { useState, useEffect } from "react";
+import CardProducto from '../components/CardProducto'; // Asegúrate de la ruta
 
-function ProductosScreen() {
-  const { productsData = [] } = useProducts() || {};
-  const [categoriasSeleccionadas, setCategoriasSeleccionadas] = useState({
-    beauty: false,
-    fragances: false,
-    furniture: false,
-    groceries: false
-  })
-  const [productosFiltrados, setProductosFiltrados] = useState([]);
+const ProductosScreen = () => {
+    const [error, setError] = useState(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+    const [items, setItems] = useState([]);
+    const [filterParam, setFilterParam] = useState("All");
 
-  useEffect(() => {
-    setProductosFiltrados(productsData);
-  }, [productsData]);
+    useEffect(() => {
+        fetch("https://dummyjson.com/products")
+            .then((res) => res.json())
+            .then(
+                (result) => {
+                    setIsLoaded(true);
+                    setItems(result.products);
+                },
+                (error) => {
+                    setIsLoaded(true);
+                    setError(error);
+                }
+            );
+    }, []);
 
-  const handleSearch = (search) => {
-    if (search) {
-      const results = productsData.filter((producto) => 
-        producto.title.toLowerCase().includes(search.toLowerCase())
-      );
-      setProductosFiltrados(results);
+    const filteredData = filterParam === "All"
+        ? items
+        : items.filter(item => item.category === filterParam);
+
+    if (error) {
+        return (
+            <p>
+                {error.message}, if you get this error, the API might have stopped
+                working.
+            </p>
+        );
+    } else if (!isLoaded) {
+        return <>loading...</>;
     } else {
-      setProductosFiltrados(productsData); // Restablece a todos los productos si no hay búsqueda
-    }
-  };
-
-const handleCheckbox = (e) => {
-    console.log(e.target.value);
-    setCategoriasSeleccionadas({
-        ...categoriasSeleccionadas,
-        [e.target.value]: e.target.checked,
-    });
-    if (e.target.checked) {
-        const resultadosCategoria = productsData.filter(item => item.language === e.target.value);
-        setProductosFiltrados(prev => [...prev, ...resultadosCategoria]);
-    } else {
-        const resultadosCategoria = productosFiltrados.filter(item => item.language !== e.target.value);
-        setProductosFiltrados(resultadosCategoria);
+        return (
+            <div className="wrapper">
+                <div className="select">
+                    <select
+                        onChange={(e) => setFilterParam(e.target.value)}
+                        className="custom-select"
+                        aria-label="Filter Products By Category"
+                    >
+                        <option value="All">Filter By Category</option>
+                        <option value="beauty">Beauty</option>
+                        <option value="fragrances">Fragrances</option>
+                        <option value="furniture">Furniture</option>
+                        <option value="groceries">Groceries</option>
+                    </select>
+                    <span className="focus"></span>
+                </div>
+                <ul className="card-grid">
+                    {filteredData.map((item) => (
+                        <li key={item.id}>
+                            <CardProducto producto={item} />
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        );
     }
 };
-
-  //https://youtu.be/94CVSF0Gr-w?t=981
-
-  return (
-    <main className="main">
-      <h1 className='titulo'>Productos</h1>
-      <div className='busqueda'>
-        <Search onSearch={handleSearch} />
-      </div>
-      
-      <div>
-          <div className='input-checkbox'>
-              <input
-                onChange={handleCheckbox} 
-                    type="checkbox"
-                    name='categorias'
-                    value='groceries'
-                    id='groceries'
-                    />
-              <label htmlFor='groceries'>Alimentos</label>
-          </div>
-          <div className='input-checkbox'>
-              <input
-                onChange={handleCheckbox} 
-                    type="checkbox"
-                    name='categorias'
-                    value='beauty'
-                    id='beauty'
-                    />
-              <label htmlFor='Belleza'>Belleza</label>
-          </div>
-          <div className='input-checkbox'>
-              <input
-                onChange={handleCheckbox} 
-                    type="checkbox"
-                    name='categorias'
-                    value='fragances'
-                    id='fragances'
-                    />
-              <label htmlFor='fragances'>Fragancias</label>
-          </div>
-          <div className='input-checkbox'>
-              <input
-                onChange={handleCheckbox} 
-                    type="checkbox"
-                    name='categorias'
-                    value='furniture'
-                    id='furniture'
-                    />
-              <label htmlFor='furniture'>Muebles</label>
-          </div>
-      </div>
-
-      <div className='productosContainer'>
-        {productosFiltrados ? (
-          productosFiltrados.map((producto, index) => (
-            <CardProducto key={index} producto={producto} />        
-          ))
-        ) : (
-          <p>No hay resultados para tu búsqueda</p>
-        )}
-      </div>
-    </main>
-  );
-}
 
 export default ProductosScreen;
