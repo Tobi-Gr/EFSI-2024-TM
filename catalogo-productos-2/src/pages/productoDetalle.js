@@ -11,9 +11,7 @@ function ProductoDetalleScreen() {
 
   useEffect(() => {
     console.log("ID del producto:", id);
-    console.log("Datos de productos:", productsData);  
     const productoEncontrado = productsData.find(p => p.id === parseInt(id, 10));
-    console.log('productoEncontrado:', productoEncontrado)
     setProducto(productoEncontrado);
   }, [productsData, id]);
 

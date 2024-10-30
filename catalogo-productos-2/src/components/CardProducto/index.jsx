@@ -6,7 +6,7 @@ const CardProducto = ({ producto }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link to={'detalle/' + producto.id} className="cardProducto">
+    <Link to={'productos/detalle/' + producto.id} className="cardProducto">
       <img 
         className="imgCard" 
         onMouseEnter={() => setHovered(true)} 

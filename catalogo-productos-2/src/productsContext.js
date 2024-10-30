@@ -11,6 +11,7 @@ async function fetchProductsData() {
     try {
         const response = await axios.get('https://dummyjson.com/products');
         setProducts(response.data.products);
+        console.log("response.data.products: \n", response.data.products)
     } catch (error) {
         console.error('Error fetching products data:', error);
     }
