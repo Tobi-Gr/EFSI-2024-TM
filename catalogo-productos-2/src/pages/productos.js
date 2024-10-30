@@ -140,10 +140,10 @@ function ProductosScreen() {
           aria-label="Filtrar por categoría"
         >
           <option value="All">Todas las categorías</option>
-          <option value="beauty">Beauty</option>
-          <option value="fragrances">Fragrances</option>
-          <option value="furniture">Furniture</option>
-          <option value="groceries">Groceries</option>
+          <option value="beauty">Belleza</option>
+          <option value="fragrances">Fragancias</option>
+          <option value="furniture">Muebles</option>
+          <option value="groceries">Alimentos</option>
         </select>
       </div>
       <div className='productosContainer'>
