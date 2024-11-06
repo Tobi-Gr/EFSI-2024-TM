@@ -3,9 +3,9 @@
 :root {
   --blanco: #edf8f8;
   --negro: #091818;
-  --celeste: #96f8f7;
-  --azul: #62c6e5;
-  --violeta: #b040fb;
+  --celeste: #d3f3f2;
+  --azul: #5592a5;
+  --violeta: #8d62aa;
 }
 
 body {
@@ -34,10 +34,17 @@ ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 li {
   float: left;
+}
+
+nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .item-nav {
@@ -59,6 +66,20 @@ li {
 .logo-nav{
   height: 3em;
   padding: 0.5em;
+}
+
+.carrito-nav{
+  height: 3em;
+  padding: 0.5em;
+}
+
+.carrito-item{
+  margin-left: auto;
+  margin-right: 2.5%;
+}
+
+.carrito-item:hover{
+  background-color: var(--azul)
 }
 
 .nombre-nav{
@@ -369,4 +390,14 @@ button {
 
 button:hover {
   background-color: var(--azul);
+}
+
+.btn-anadirCarro{
+  background-color: var(--azul);
+  width: fit-content;
+  padding: 1.25%;
+}
+
+.btn-anadirCarro:hover{
+  background-color: var(--violeta);
 }

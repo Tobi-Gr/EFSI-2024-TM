@@ -1,6 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 
 import logo from './../assets/logo.png';
+import carrito from './../assets/carrito.png'
 
 const Layout = () => {
   return (
@@ -9,7 +10,7 @@ const Layout = () => {
         <ul>
           <li>            
             <Link to="/">
-                <img src={logo} alt="logo" className="logo-nav"/>
+                <img src={logo} alt="Logo" className="logo-nav"/>
             </Link>
           </li>
           <li>
@@ -20,6 +21,9 @@ const Layout = () => {
           </li>
           <li>
             <Link to="/contacto" className="item-nav">Contacto</Link>
+          </li>
+          <li className="carrito-item">
+            <img src={carrito} alt="Carrito" className="carrito-nav"/>
           </li>
         </ul>
       </nav>

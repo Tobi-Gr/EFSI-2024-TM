@@ -4,7 +4,7 @@ import { useProducts } from './../productsContext';
 import FotosProducto from '../components/ImagenesProducto';
 
 function ProductoDetalleScreen() {
-  const {productsData = [] } = useProducts() || {};
+  const {productsData = [], anadirAlCarrito } = useProducts() || {};
 
   const [producto, setProducto] = useState();
   const { id } = useParams();
@@ -27,6 +27,7 @@ function ProductoDetalleScreen() {
             <h1 className='titulo'>{producto.title}</h1>
             <h3 className='descripción'>{producto.description}</h3>
             <h3>${producto.price}</h3>
+            <button className='btn-anadirCarro' onClick={anadirAlCarrito(producto)}>Añadir al carrito</button>
           </div>
         </div>
       )}
