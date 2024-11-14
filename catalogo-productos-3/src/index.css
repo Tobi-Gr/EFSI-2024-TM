@@ -404,7 +404,6 @@ button:hover {
 
 /*MODAL CARRITO*/
 
-/* Estilo general para la superposición del modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -424,6 +423,7 @@ button:hover {
   max-width: 400px;
   width: 100%;
   height: 100%;
+  overflow-y: auto; /* Permite el desplazamiento vertical */
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   position: relative;
 }
@@ -453,3 +453,37 @@ button:hover {
   color: var(--blanco);
 }
 
+/* Pastilla */
+.pastilla-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: fit-content;
+  align-items: center;
+}
+
+.pastilla-menos, .pastilla-cantidad, .pastilla-mas{
+  background-color: var(--celeste);
+  margin: 0 !important;
+  color: var(--negro);
+  padding: 3;
+  height: 2rem;
+}
+
+.pastilla-menos{
+  border-top-left-radius: 50%;
+  border-bottom-left-radius: 50%;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+.pastilla-mas{
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  border-top-left-radius: 0%;
+  border-bottom-left-radius: 0%;
+}
+
+.pastilla-cantidad{
+  width: 2em;
+  border-radius: 0;
+}

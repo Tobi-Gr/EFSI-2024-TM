@@ -27,7 +27,7 @@ function ProductoDetalleScreen() {
             <h1 className='titulo'>{producto.title}</h1>
             <h3 className='descripción'>{producto.description}</h3>
             <h3>${producto.price}</h3>
-            <button className='btn-anadirCarro' onClick={anadirAlCarrito(producto)}>Añadir al carrito</button>
+            <button className='btn-anadirCarro' onClick={() => anadirAlCarrito(producto)}>Añadir al carrito</button>
           </div>
         </div>
       )}

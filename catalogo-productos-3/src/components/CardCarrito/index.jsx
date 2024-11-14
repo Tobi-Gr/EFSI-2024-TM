@@ -1,9 +1,23 @@
 import React from 'react';
+import { useProducts } from './../../productsContext';
 
-const CardCarrito = ({ producto, cantidad }) => {
-   function BotonCantidad() {
+const CardCarrito = ({ producto }) => {
+  const { actualizarCantEnCarrito, sacarDeCarrito } = useProducts();
+  
+  function handleMenos() {
+    if (producto.quantity > 1) {
+      actualizarCantEnCarrito(producto.id, producto.quantity - 1);
+    } else {
+      sacarDeCarrito(producto.id);
+    }
+  }
+  
+  function BotonCantidad() {
        return (
-            <main className="main">
+            <main className="pastilla-container">
+              <button className="pastilla-menos" onClick={handleMenos}>-</button>
+              <h3 className="pastilla-cantidad" key={'cardCarrito-'+producto.id}>{producto.quantity}</h3>
+              <button className="pastilla-mas" onClick={() => actualizarCantEnCarrito(producto.id, producto.quantity+1)}>+</button>
             </main>
        );
   }
@@ -12,8 +26,7 @@ const CardCarrito = ({ producto, cantidad }) => {
     <div className="card-carrito-container">
         <img alt='imagen del producto' src={producto.thumbnail}/>
         <h3>{producto.name}</h3>
-        <h2>X</h2>
-        {/* pastillita rara con la cantidad el + y el - */}
+        <BotonCantidad/>
         <h4>${producto.price}</h4>
     </div>
   );

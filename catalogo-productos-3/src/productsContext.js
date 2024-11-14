@@ -12,7 +12,6 @@ export function ProductsProvider({ children }) {
             try {
                 const response = await axios.get('https://dummyjson.com/products');
                 setProducts(response.data.products);
-                console.log('response.data.products:', response.data.products);
             } catch (error) {
                 console.error('Error fetching products data:', error);
             }
@@ -38,7 +37,7 @@ export function ProductsProvider({ children }) {
     const sacarDeCarrito = (productId) => {
         setCarrito((prevCarrito) => prevCarrito.filter((item) => item.id !== productId));
     };
-
+    
     const actualizarCantEnCarrito = (productId, cantidad) => {
         setCarrito((prevCarrito) => {
             const carritoActualizado = prevCarrito.map((item) =>
@@ -49,8 +48,10 @@ export function ProductsProvider({ children }) {
     };
 
     const calcularTotal = () => {
-        return carrito.reduce((total, item) => total + item.price * item.quantity, 0);
+        const total = carrito.reduce((total, item) => total + item.price * item.quantity, 0);
+        return parseFloat(total.toFixed(2));
     };
+    
 
     return (
         <ProductsContext.Provider
