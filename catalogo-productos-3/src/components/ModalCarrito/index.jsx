@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from "react-router-dom";
 import CardCarrito from '../CardCarrito';
 import { useProducts } from './../../productsContext';
 
@@ -22,7 +23,7 @@ const Modal = ({ isOpen, onClose }) => {
             <CardCarrito producto={producto} />
           ))}
         <h3><b>Total:</b> ${total}</h3>
-        <button className='boton-mas-info'><b>Más info</b></button>
+        <button className='boton-mas-info' onClick={()=> console.log("a")}><b><Link to="/carrito" className='link-no-decor'>Más info</Link></b></button>
       </div>
     </div>
   );

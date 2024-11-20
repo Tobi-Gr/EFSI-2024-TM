@@ -501,6 +501,11 @@ button:hover {
   height: 8rem;
 }
 
+.link-no-decor{
+  color: currentColor;
+  text-decoration: none;
+}
+
 /* Pastilla */
 .pastilla-container {
   display: flex;
@@ -542,3 +547,18 @@ button:hover {
   font-size: 1.2rem;
 }
 
+/*carritoScreen*/
+
+.tabla-carrito
+{
+  width: 60%;
+}
+
+th{
+  text-align: left;
+}
+
+.delete-product-btn:hover{
+  color: var(--azul);
+  font-weight: bold;
+}
