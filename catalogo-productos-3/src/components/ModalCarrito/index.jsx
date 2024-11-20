@@ -22,7 +22,7 @@ const Modal = ({ isOpen, onClose }) => {
             <CardCarrito producto={producto} />
           ))}
         <h3><b>Total:</b> ${total}</h3>
-        <button><b>Cerrar</b></button>
+        <button className='boton-mas-info'><b>Más info</b></button>
       </div>
     </div>
   );

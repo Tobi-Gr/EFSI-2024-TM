@@ -68,6 +68,16 @@ nav{
   padding: 0.5em;
 }
 
+.carrito-contenedor {
+  display: flex;
+  align-items: center;
+}
+
+.carrito-contenedor p {
+  margin-left: 0.5em;
+  font-size: 1.2em;
+}
+
 .carrito-nav{
   height: 3em;
   padding: 0.5em;
@@ -76,6 +86,7 @@ nav{
 .carrito-item{
   margin-left: auto;
   margin-right: 2.5%;
+  
 }
 
 .carrito-item:hover{
@@ -445,7 +456,6 @@ button:hover {
   border: none;
   font-size: 20px;
   color: var(--negro);
-  cursor: pointer;
   width: fit-content;
 }
 
@@ -453,8 +463,46 @@ button:hover {
   color: var(--blanco);
 }
 
+.boton-mas-info{
+  margin-top: 1rem;
+  background-color: var(--celeste);
+  color: var(--negro);
+  border: none;
+}
+
+.boton-mas-info:hover{
+  background-color: var(--celeste);
+  color: var(--negro);
+}
+
+/*Card producto dentro de modal carrito*/
+.card-carrito-container {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 2rem;
+}
+
+.informacion-card-carrito {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.cant-precio-card-carrito {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+}
+
+.thumbnail-carrito {
+  height: 8rem;
+}
+
 /* Pastilla */
-.pastilla-container{
+.pastilla-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -462,7 +510,7 @@ button:hover {
   align-items: center;
 }
 
-.pastilla-menos, .pastilla-cantidad, .pastilla-mas{
+.pastilla-menos, .pastilla-cantidad, .pastilla-mas {
   background-color: var(--celeste);
   margin: 0 !important;
   color: var(--negro);
@@ -470,20 +518,27 @@ button:hover {
   height: 2rem;
 }
 
-.pastilla-menos{
+.pastilla-menos {
   border-top-left-radius: 50%;
   border-bottom-left-radius: 50%;
   border-top-right-radius: 0%;
   border-bottom-right-radius: 0%;
 }
-.pastilla-mas{
+
+.pastilla-mas {
   border-top-right-radius: 50%;
   border-bottom-right-radius: 50%;
   border-top-left-radius: 0%;
   border-bottom-left-radius: 0%;
 }
 
-.pastilla-cantidad{
+.pastilla-cantidad {
   width: 2em;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 0;
+  font-size: 1.2rem;
 }
+

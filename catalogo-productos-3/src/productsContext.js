@@ -51,6 +51,14 @@ export function ProductsProvider({ children }) {
         const total = carrito.reduce((total, item) => total + item.price * item.quantity, 0);
         return parseFloat(total.toFixed(2));
     };
+
+    const calcularCantProductos = () => {
+        let cantProductos = 0;
+        carrito.forEach(producto => {
+            cantProductos += producto.quantity;
+        });
+        return cantProductos;
+    }
     
 
     return (
@@ -61,7 +69,8 @@ export function ProductsProvider({ children }) {
                 anadirAlCarrito: anadirAlCarrito,
                 sacarDeCarrito: sacarDeCarrito,
                 actualizarCantEnCarrito: actualizarCantEnCarrito,
-                calcularTotal: calcularTotal
+                calcularTotal: calcularTotal,
+                calcularCantProductos: calcularCantProductos
             }}
         >
             {children}
