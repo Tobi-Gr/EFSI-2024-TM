@@ -56,10 +56,8 @@ function ProductosScreen() {
   return (
     <main className="main">
       <h1 className='titulo'>Productos</h1>
-      <div className='busqueda'>
+      <div className='busqueda-container'>
         <Search onSearch={handleSearch} />
-      </div>
-      <div>
         <select
           onChange={(e) => setFilterParam(e.target.value)}
           className="custom-select"
