@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import {getCarrito, saveCarrito} from './storage';
 import axios from 'axios';
 
 const ProductsContext = createContext();
@@ -17,25 +18,37 @@ export function ProductsProvider({ children }) {
             }
         }
 
+        const nuevoCarrito = getCarrito();
+        setCarrito(nuevoCarrito);
         fetchProductsData();
     }, []);
-
+    
+    const actualizarCarrito = (nuevoCarrito) => {
+        setCarrito(nuevoCarrito);
+        saveCarrito(nuevoCarrito);
+    };
 
     const anadirAlCarrito = (product) => {
         setCarrito((prevCarrito) => {
             const indexProductoExistente = prevCarrito.findIndex((item) => item.id === product.id);
-            if (indexProductoExistente !== -1) { //ya tiene cargado el producto, así que se le agrega cantidad
-                const carritoActualizado = [...prevCarrito];
+            let carritoActualizado;
+            if (indexProductoExistente !== -1) { // Ya tiene el producto, se agrega cantidad
+                carritoActualizado = [...prevCarrito];
                 carritoActualizado[indexProductoExistente].quantity += 1;
-                return carritoActualizado;
             } else {
-                return [...prevCarrito, { ...product, quantity: 1 }]; //se le agrega el producto con cantidad 1
+                carritoActualizado = [...prevCarrito, { ...product, quantity: 1 }]; // Se agrega el producto con cantidad 1
             }
+            actualizarCarrito(carritoActualizado);
+            return carritoActualizado;
         });
     };
 
     const sacarDeCarrito = (productId) => {
-        setCarrito((prevCarrito) => prevCarrito.filter((item) => item.id !== productId));
+        setCarrito((prevCarrito) => {
+            const carritoActualizado = prevCarrito.filter((item) => item.id !== productId);
+            actualizarCarrito(carritoActualizado);
+            return carritoActualizado;
+        });
     };
     
     const actualizarCantEnCarrito = (productId, cantidad) => {
@@ -43,6 +56,7 @@ export function ProductsProvider({ children }) {
             const carritoActualizado = prevCarrito.map((item) =>
                 item.id === productId ? { ...item, quantity: cantidad } : item
             );
+            actualizarCarrito(carritoActualizado);
             return carritoActualizado;
         });
     };
