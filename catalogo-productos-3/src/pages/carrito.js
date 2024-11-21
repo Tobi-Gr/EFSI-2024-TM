@@ -1,4 +1,3 @@
-//Inspo: https://www.nike.com.ar/checkout/#/cart
 import React from 'react';
 import { Link } from "react-router-dom";
 import { useProducts } from '../productsContext';

@@ -9,19 +9,22 @@ export function ProductsProvider({ children }) {
     const [carrito, setCarrito] = useState([]);
 
     useEffect(() => {
-        async function fetchProductsData() {
+        async function fetchData() {
             try {
+                // traer productos
                 const response = await axios.get('https://dummyjson.com/products');
                 setProducts(response.data.products);
+                
+                // traer carritos
+                const nuevoCarrito = await getCarrito();
+                setCarrito(Array.isArray(nuevoCarrito) ? nuevoCarrito : []);
             } catch (error) {
-                console.error('Error fetching products data:', error);
+                console.error('Error fetching data:', error);
             }
         }
-
-        const nuevoCarrito = getCarrito();
-        setCarrito(nuevoCarrito);
-        fetchProductsData();
-    }, []);
+    
+        fetchData();
+    }, []); 
     
     const actualizarCarrito = (nuevoCarrito) => {
         setCarrito(nuevoCarrito);
@@ -66,13 +69,13 @@ export function ProductsProvider({ children }) {
         return parseFloat(total.toFixed(2));
     };
 
-    const calcularCantProductos = () => {
+    const calcularCantProductos = () => {      
         let cantProductos = 0;
         carrito.forEach(producto => {
-            cantProductos += producto.quantity;
+          cantProductos += producto.quantity;
         });
         return cantProductos;
-    }
+      };
     
 
     return (
